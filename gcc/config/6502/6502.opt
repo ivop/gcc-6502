@@ -64,3 +64,6 @@ Enum(machine_type) String(bbcmaster) Value(mach_bbcmaster)
 
 EnumValue
 Enum(machine_type) String(c64) Value(mach_c64)
+
+EnumValue
+Enum(machine_type) String(atari) Value(mach_atari)

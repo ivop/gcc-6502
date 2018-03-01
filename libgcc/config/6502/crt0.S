@@ -9,6 +9,7 @@
 	.import __STARTUP_LOAD__
 	.import __BSS_RUN__
 	.import __BSS_SIZE__
+    .import __BSS_LOAD__
 	.import __STACKTOP__
 	.import __DATA_RUN__
 	.import __DATA_LOAD__
@@ -29,9 +30,24 @@ line2:
 	.byte $00, $00  ; End of basic program
 #endif
 
+#ifdef __ATARI__
+    .segment "EXEHDR"
+    .word   $FFFF
+    .word   __start
+    .word   __BSS_LOAD__ - 1
+
+    .segment "AUTOSTRT"
+    .word   $02E0
+    .word   $02E1
+    .word   __start
+#endif
+
 	.segment "STARTUP"
+#ifndef __ATARI__
 	lda #38
 	sta 1
+#endif
+__start:
 	lda #<__STACKTOP__
 	sta _sp0
 	lda #>__STACKTOP__
@@ -130,6 +146,8 @@ nodata:
 	lda #$27
 	sta 1
 	rts
+#elif defined(__ATARI__)
+    rts
 #else
 #error "Don't know how to exit on this machine"
 #endif

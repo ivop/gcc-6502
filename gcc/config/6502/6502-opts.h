@@ -16,7 +16,8 @@ enum machine_type
   mach_semi65x,
   mach_bbcb,
   mach_bbcmaster,
-  mach_c64
+  mach_c64,
+  mach_atari
 };
 
 #endif

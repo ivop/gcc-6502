@@ -55,6 +55,8 @@
       builtin_define ("__BBCMICRO__");			\
     else if (m65x_machine_option == mach_c64)		\
       builtin_define ("__C64__");			\
+    else if (m65x_machine_option == mach_atari)		\
+      builtin_define ("__ATARI__");			\
   } while (0)
 
 /*****************************************************************************
@@ -685,6 +687,7 @@ typedef int CUMULATIVE_ARGS;
   "  mmach=bbcmaster:%{!T*:--config %R/lib/cc65/cfg/bbcmaster.cfg};"	\
   "  mmach=c64:%{!T*:--config %R/lib/cc65/cfg/c64.cfg};"		\
   "  mmach=semi65x:%{!T*:--config %R/lib/cc65/cfg/semi65x.cfg};"	\
+  "  mmach=atari8:%{!T*:--config %R/lib/cc65/cfg/atari.cfg};"		\
   "  :%{!T*:--config %R/lib/cc65/cfg/semi65x.cfg}}"
 
 #undef SYSROOT_SUFFIX_SPEC
@@ -692,6 +695,7 @@ typedef int CUMULATIVE_ARGS;
   "%{mmach=bbcb:/bbcb} " \
   "%{mmach=bbcmaster:/bbcm} " \
   "%{mmach=c64:/c64} " \
+  "%{mmach=atari:/atari} " \
   "%{mmach=semi65x:}"
 
 extern const char *m65x_fix_dash_l_libs (int argc, const char **argv);
