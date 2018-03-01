@@ -687,7 +687,7 @@ typedef int CUMULATIVE_ARGS;
   "  mmach=bbcmaster:%{!T*:--config %R/lib/cc65/cfg/bbcmaster.cfg};"	\
   "  mmach=c64:%{!T*:--config %R/lib/cc65/cfg/c64.cfg};"		\
   "  mmach=semi65x:%{!T*:--config %R/lib/cc65/cfg/semi65x.cfg};"	\
-  "  mmach=atari8:%{!T*:--config %R/lib/cc65/cfg/atari.cfg};"		\
+  "  mmach=atari:%{!T*:--config %R/lib/cc65/cfg/atari.cfg};"		\
   "  :%{!T*:--config %R/lib/cc65/cfg/semi65x.cfg}}"
 
 #undef SYSROOT_SUFFIX_SPEC
