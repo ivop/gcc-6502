@@ -605,6 +605,7 @@ typedef int CUMULATIVE_ARGS;
 
 #define ASM_OUTPUT_COMMON(STREAM, NAME, SIZE, ROUNDED)		\
   do {								\
+    fprintf ((STREAM), ".bss\n"); \
     bool needs_dollar = strlen (NAME) == 1;			\
     fprintf ((STREAM), "\t.global ");				\
     assemble_name ((STREAM), (NAME));				\
@@ -614,6 +615,7 @@ typedef int CUMULATIVE_ARGS;
 
 #define ASM_OUTPUT_LOCAL(STREAM, NAME, SIZE, ROUNDED)		\
   do {								\
+    fprintf ((STREAM), ".bss\n"); \
     assemble_name ((STREAM), (NAME));				\
     fprintf ((STREAM), ":\n");					\
     fprintf ((STREAM), "\t.res %d\n", (int) (SIZE));		\
@@ -621,6 +623,7 @@ typedef int CUMULATIVE_ARGS;
 
 #define ASM_OUTPUT_SKIP(STREAM, NBYTES)				\
   do {								\
+    fprintf ((STREAM), ".bss\n"); \
     fprintf ((STREAM), ".res %d,$00\n", (int) (NBYTES));	\
   } while (0)
 
