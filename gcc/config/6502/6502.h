@@ -611,6 +611,7 @@ typedef int CUMULATIVE_ARGS;
     assemble_name ((STREAM), (NAME));				\
     fprintf ((STREAM), "\n%s%s:\n\t.res %d\n", (NAME),		\
 	     needs_dollar ? "$" : "", (int) (SIZE));		\
+    fprintf ((STREAM), ".rodata\n"); \
   } while (0)
 
 #define ASM_OUTPUT_LOCAL(STREAM, NAME, SIZE, ROUNDED)		\
@@ -619,11 +620,11 @@ typedef int CUMULATIVE_ARGS;
     assemble_name ((STREAM), (NAME));				\
     fprintf ((STREAM), ":\n");					\
     fprintf ((STREAM), "\t.res %d\n", (int) (SIZE));		\
+    fprintf ((STREAM), ".rodata\n"); \
   } while (0)
 
 #define ASM_OUTPUT_SKIP(STREAM, NBYTES)				\
   do {								\
-    fprintf ((STREAM), ".bss\n"); \
     fprintf ((STREAM), ".res %d,$00\n", (int) (NBYTES));	\
   } while (0)
 
